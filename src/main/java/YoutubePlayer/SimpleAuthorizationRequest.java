@@ -12,14 +12,14 @@ import com.google.api.services.youtube.YouTube;
 import com.google.api.services.youtube.model.SearchListResponse;
 
 public class SimpleAuthorizationRequest{
-    private final String urlStr = "https://www.googleapis.com/youtube/v3/search";
+    private final String urlStr = "https://www.googleapis.com/youtube/v3/videos";
     private String query;
     private HttpURLConnection connection;
     private URL url;
     private int maxResults = 25;
 
     public SimpleAuthorizationRequest(String nameForSearch) throws IOException {
-        this.query = "query=" + nameForSearch.replaceAll(" ", "+");
+        this.query = nameForSearch.replaceAll(" ", "+");
         System.out.println(this.query);
         String requestString = urlStr + "?" + "key=AIzaSyAeIRTUe3cCMi41-5RB5O6ISJE5dB0g24w" +
                 "&" + "q=" + this.query;
@@ -28,10 +28,10 @@ public class SimpleAuthorizationRequest{
     
     public SimpleAuthorizationRequest(String nameForSearch, int maxResults) throws IOException {
     	this.maxResults = maxResults;
-        this.query = "query=" + nameForSearch.replaceAll(" ", "+");
+        this.query = nameForSearch.replaceAll(" ", "+");
         System.out.println(this.query);
         String requestString = urlStr + "?" + "key=AIzaSyAeIRTUe3cCMi41-5RB5O6ISJE5dB0g24w" + 
-        		"&" + "resultsPerPage=" + this.maxResults +
+        		"&" + "maxResults=" + this.maxResults +
                 "&" + "q=" + this.query;
         this.url = new URL(requestString);
     }

@@ -23,6 +23,18 @@ public class TestSimpleConnection {
 	
 	@Test
 	public void testSimpleConnection() throws IOException {
+		URL url = new URL("https://www.googleapis.com/youtube/v3/videos"
+				+"?key=AIzaSyAeIRTUe3cCMi41-5RB5O6ISJE5dB0g24w"+
+				"&maxResults=25" + "&q=ЕвгенийБорисов");
+		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+		connection.setRequestMethod("GET");
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+        String line = bufferedReader.readLine();
+        while (line != null) {
+        	System.out.println(line);
+        	line = bufferedReader.readLine();
+        }
+		
 	}
 	
 	@Test
@@ -32,7 +44,7 @@ public class TestSimpleConnection {
 	
 	@Test
 	public void testStupidRequest() throws IOException {
-		URL url = new URL("https://www.youtube.com/results?search_query=%D0%B5%D0%B2%D0%B3%D0%B5%D0%BD%D0%B8%D0%B9+%D0%B1%D0%BE%D1%80%D0%B8%D1%81%D0%BE%D0%B2+java");
+		URL url = new URL("https://www.youtube.com/results?search_query=Евгений+Борисов+java&maxResults=25");
 		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 		connection.setRequestMethod("GET");
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));

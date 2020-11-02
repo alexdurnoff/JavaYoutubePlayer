@@ -32,8 +32,7 @@ public class VideoPane extends GridPane {
 			List<SearchResult> resultList = response.getItems();
 			for (int i = 0; i < resultList.size(); i++) {
 				this.add(new Label(resultList.get(i).getEtag()), 0, i);
-				
-				
+				this.add(new PlayButton(resultList.get(i).getId().getVideoId()), 1, i);
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
