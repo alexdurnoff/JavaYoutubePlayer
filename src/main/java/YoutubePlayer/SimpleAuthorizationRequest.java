@@ -12,7 +12,7 @@ import com.google.api.services.youtube.YouTube;
 import com.google.api.services.youtube.model.SearchListResponse;
 
 public class SimpleAuthorizationRequest{
-    private final String urlStr = "https://www.googleapis.com/youtube/v3/videos";
+    private final String urlStr = "https://www.googleapis.com/youtube/v3/search";
     private String query;
     private HttpURLConnection connection;
     private URL url;

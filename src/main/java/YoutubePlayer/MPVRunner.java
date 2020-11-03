@@ -5,7 +5,7 @@ import java.io.IOException;
 public class MPVRunner {
 
 	public void run(String videoId) {
-		ProcessBuilder processBuilder = new ProcessBuilder("mpv", videoId);
+		ProcessBuilder processBuilder = new ProcessBuilder("mpv", "https://youtu.be/" + videoId);
 		try {
 			
 			processBuilder.start();

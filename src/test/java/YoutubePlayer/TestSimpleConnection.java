@@ -23,9 +23,9 @@ public class TestSimpleConnection {
 	
 	@Test
 	public void testSimpleConnection() throws IOException {
-		URL url = new URL("https://www.googleapis.com/youtube/v3/videos"
+		URL url = new URL("https://www.googleapis.com/youtube/v3/search"
 				+"?key=AIzaSyAeIRTUe3cCMi41-5RB5O6ISJE5dB0g24w"+
-				"&maxResults=25" + "&q=ЕвгенийБорисов");
+				"&maxResults=25" + "&q=Евгений+Борисов+Java");
 		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 		connection.setRequestMethod("GET");
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
@@ -34,26 +34,13 @@ public class TestSimpleConnection {
         	System.out.println(line);
         	line = bufferedReader.readLine();
         }
-		
+        System.out.println("Получили список видео");
+        System.exit(0);
 	}
 	
 	@Test
 	public void testApplication() throws GoogleJsonResponseException, GeneralSecurityException, IOException {
 		System.out.println(YoutubeUtilityClass.getVideoIdList("Евгений Борисов Java"));
-	}
-	
-	@Test
-	public void testStupidRequest() throws IOException {
-		URL url = new URL("https://www.youtube.com/results?search_query=Евгений+Борисов+java&maxResults=25");
-		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-		connection.setRequestMethod("GET");
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-        String line = bufferedReader.readLine();
-        while (line != null) {
-        	System.out.println(line);
-        	line = bufferedReader.readLine();
-        }
-
 	}
 	
 	

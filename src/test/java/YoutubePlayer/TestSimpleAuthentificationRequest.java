@@ -9,9 +9,9 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class TestConnection5NumberInvoke {
+public class TestSimpleAuthentificationRequest {
     @Test
-    public void testConnection5Number() throws IOException {
+    public void testSimpleAuthentificationRequest() throws IOException {
         SimpleAuthorizationRequest simpleAuthorizationRequest =
                 new SimpleAuthorizationRequest("Евгений Борисов Java", 25);
         StringBuffer stringBuffer = simpleAuthorizationRequest.getResponce();
