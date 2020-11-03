@@ -4,17 +4,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.ProtocolException;
 import java.net.URL;
-import java.util.ArrayList;
-
-import com.google.api.services.youtube.YouTube;
-import com.google.api.services.youtube.model.SearchListResponse;
 
 public class SimpleAuthorizationRequest{
     private final String urlStr = "https://www.googleapis.com/youtube/v3/search";
     private String query;
-    private HttpURLConnection connection;
     private URL url;
     private int maxResults = 25;
 
@@ -43,7 +37,7 @@ public class SimpleAuthorizationRequest{
         //connection.setFixedLengthStreamingMode(300);
         StringBuffer responce = new StringBuffer();
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-        String readLine = bufferedReader.readLine();
+        //String readLine = bufferedReader.readLine();
         /*while(readLine != null){
             responce.append(bufferedReader.readLine());
         }*/
