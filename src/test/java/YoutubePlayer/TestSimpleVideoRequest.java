@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.junit.Test;
@@ -25,12 +26,12 @@ public class TestSimpleVideoRequest {
 		connection.setRequestMethod("GET");
 		//connection.addRequestProperty("key", key);
 		connection.addRequestProperty("maxResults", maxResults);
-		connection.addRequestProperty("q", query);
+		connection.addRequestProperty("q", query.replace(' ', '+'));
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
         for (int i = 0; i < 1000; i++) {
         	System.out.println(bufferedReader.readLine());
         }
 		
 	}
-
+	
 }
