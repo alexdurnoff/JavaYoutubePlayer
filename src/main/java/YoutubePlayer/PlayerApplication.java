@@ -23,10 +23,15 @@ public class PlayerApplication extends Application {
 		videoPane.setPrefWidth(rootNode.getWidth());
 		ScrollPane scrollPane = new ScrollPane(videoPane);
 		scrollPane.setHbarPolicy(ScrollBarPolicy.ALWAYS);
+		scrollPane.setFitToWidth(true);
 		Button searchButton = new Button("search the videos");
 		searchButton.setOnAction(ae -> videoPane.searchAndShow(searchText.getText()));
-		rootNode.getColumnConstraints().add(new ColumnConstraints(600));
-		rootNode.getColumnConstraints().add(new ColumnConstraints(600));
+		ColumnConstraints column0 = new ColumnConstraints();
+		ColumnConstraints column1 = new ColumnConstraints();
+		column0.setPercentWidth(90);
+		column1.setPercentWidth(10);
+		rootNode.getColumnConstraints().add(column0);
+		rootNode.getColumnConstraints().add(column1);
 		rootNode.add(searchText, 0, 0);
 		rootNode.add(searchButton, 1, 0);
 		rootNode.add(scrollPane, 0, 1, 2, 1);
