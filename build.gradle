@@ -3,6 +3,16 @@ apply plugin: 'application'
 
 mainClassName = "YoutubePlayer.PlayerApplication"
 
+jar {
+    manifest {
+        attributes "Main-Class": "YoutubePlayer.PlayerApplication"
+    }
+ 
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
 
 
 repositories {

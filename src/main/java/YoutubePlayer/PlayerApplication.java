@@ -12,20 +12,22 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class PlayerApplication extends Application {
+	private GridPane rootNode;
+	private ScrollPane scrollPane;
+	private VideoPane videoPane;
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		primaryStage.setTitle("JavaYoutubePlayer");
 		TextField searchText = new TextField();
-		GridPane rootNode = new GridPane();
+		this.rootNode = new GridPane();
 		rootNode.setAlignment(Pos.TOP_CENTER);
-		VideoPane videoPane = new VideoPane();
-		videoPane.setPrefWidth(rootNode.getWidth());
-		ScrollPane scrollPane = new ScrollPane(videoPane);
-		scrollPane.setHbarPolicy(ScrollBarPolicy.ALWAYS);
-		scrollPane.setFitToWidth(true);
 		Button searchButton = new Button("search the videos");
-		searchButton.setOnAction(ae -> videoPane.searchAndShow(searchText.getText()));
+		searchButton.setOnAction(ae -> {
+			removeScrollPaneIfExists();
+			addNewScrollPane();
+			videoPane.searchAndShow(searchText.getText());
+		});
 		ColumnConstraints column0 = new ColumnConstraints();
 		ColumnConstraints column1 = new ColumnConstraints();
 		column0.setPercentWidth(90);
@@ -34,17 +36,27 @@ public class PlayerApplication extends Application {
 		rootNode.getColumnConstraints().add(column1);
 		rootNode.add(searchText, 0, 0);
 		rootNode.add(searchButton, 1, 0);
-		rootNode.add(scrollPane, 0, 1, 2, 1);
 		Scene scene = new Scene(rootNode, 1300, 700);
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
 	
+	public void removeScrollPaneIfExists() {
+		if (this.scrollPane != null) this.rootNode.getChildren().remove(scrollPane);
+	}
+	
+	public void addNewScrollPane() {
+		this.videoPane = new VideoPane();
+		videoPane.setPrefWidth(rootNode.getWidth());
+		this.scrollPane = new ScrollPane(videoPane);
+		scrollPane.setHbarPolicy(ScrollBarPolicy.ALWAYS);
+		scrollPane.setFitToWidth(true);
+		rootNode.add(scrollPane, 0, 1, 2, 1);
+	}
+	
+	
 	public static void main(String[] args) {
 		launch();
 		
 	}
-	
-	
-
 }
