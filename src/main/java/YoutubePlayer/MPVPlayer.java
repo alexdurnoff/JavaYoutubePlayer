@@ -2,8 +2,9 @@ package YoutubePlayer;
 
 import java.io.IOException;
 
-public class MPVRunner {
+public class MPVPlayer implements VideoPlayer {
 
+	@Override
 	public void run(String videoId) {
 		ProcessBuilder processBuilder = new ProcessBuilder("mpv", "https://youtu.be/" + videoId).inheritIO();
 		try {
@@ -15,6 +16,7 @@ public class MPVRunner {
 		}
 	}
 
+	@Override
 	public void runBestFormat(String videoId) {
 		ProcessBuilder processBuilder = new ProcessBuilder("mpv","--ytdl-format=best", "https://youtu.be/" + videoId).inheritIO();
 		try {
@@ -38,6 +40,11 @@ public class MPVRunner {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}*/
+	}
+
+	@Override
+	public String name() {
+		return "MPV";
 	}
 
 }

@@ -8,11 +8,7 @@ public class BestFormatPlayButton extends Button{
 	public BestFormatPlayButton(String videoId) {
 		this.videoId = videoId;
 		this.setText("play best format");
-		//this.setWidth(400);
-		this.setOnAction(ae -> new MPVRunner().runBestFormat(this.videoId));
+		this.setOnAction(ae -> new MPVPlayer().runBestFormat(this.videoId));
 		
 	}
-	
-	
-
 }
