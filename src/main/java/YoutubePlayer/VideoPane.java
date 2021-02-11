@@ -46,8 +46,8 @@ public class VideoPane extends GridPane {
 				ImageView imageView = new ImageView(new Image(imageUrl));
 				this.add(imageView, 1, i);
 				this.add(new PlayButton(new VLCPlayer(), resultList.get(i).getId().getVideoId()), 2, i);
-				this.add(new PlayButton(resultList.get(i).getId().getVideoId()), 3, i);
-				this.add(new BestFormatPlayButton(resultList.get(i).getId().getVideoId()), 4, i);
+				this.add(new PlayButton(new SMPlayer(), resultList.get(i).getId().getVideoId()), 3, i);
+				this.add(new PlayButton(new JavafxPlayer(), resultList.get(i).getId().getVideoId()), 4, i);
 			}
 			this.setGridLinesVisible(true);
 			this.setAlignment(Pos.CENTER);
