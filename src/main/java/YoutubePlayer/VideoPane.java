@@ -39,7 +39,7 @@ public class VideoPane extends GridPane {
 			List<SearchResult> resultList = response.getItems();
 			for (int i = 0; i < resultList.size(); i++) {
 				Label label = new Label(resultList.get(i).getSnippet().getDescription());
-				label.setPrefWidth(800);
+				label.setPrefWidth(750);
 				label.setWrapText(true);
 				this.add(label, 0, i);
 				String imageUrl = resultList.get(i).getSnippet().getThumbnails().getDefault().getUrl();
@@ -47,7 +47,8 @@ public class VideoPane extends GridPane {
 				this.add(imageView, 1, i);
 				this.add(new PlayButton(new VLCPlayer(), resultList.get(i).getId().getVideoId()), 2, i);
 				this.add(new PlayButton(new SMPlayer(), resultList.get(i).getId().getVideoId()), 3, i);
-				this.add(new PlayButton(new JavafxPlayer(), resultList.get(i).getId().getVideoId()), 4, i);
+				this.add(new PlayButton(new MPVPlayer(), resultList.get(i).getId().getVideoId()), 4, i);
+				this.add(new BestFormatPlayButton(imageUrl), 5, i);
 			}
 			this.setGridLinesVisible(true);
 			this.setAlignment(Pos.CENTER);

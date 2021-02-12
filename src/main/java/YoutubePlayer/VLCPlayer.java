@@ -5,7 +5,7 @@ import java.io.IOException;
 public class VLCPlayer implements VideoPlayer {
     @Override
     public void run(String videoId) {
-        ProcessBuilder processBuilder = new ProcessBuilder("cvlc", "https://youtu.be/" + videoId).inheritIO();
+        ProcessBuilder processBuilder = new ProcessBuilder("vlc", "https://youtu.be/" + videoId).inheritIO();
         try {
 
             processBuilder.start();
